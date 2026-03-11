@@ -9,6 +9,7 @@ Ans:
 Overall getElementById is pretty much the fastest and it returns a single element but has low flexibility. Where as querySelectors have higher flexibility.
 
 2. How do you create and insert a new element into the DOM?
+
 Ans: We use  **document.createElement()** to generate a new node in memory. For ex- const newDiv = document.createElement('div');. And then for adding as a chile we use appendChild() which adds the element as the last child of a parent.
 A practical example would be:
 Find the parent

@@ -8,7 +8,7 @@ Ans:
 
 Overall getElementById is pretty much the fastest and it returns a single element but has low flexibility. Where as querySelectors have higher flexibility.
 
-2. How do you create and insert a new element into the DOM?
+### 2. How do you create and insert a new element into the DOM?
 
 Ans: We use  **document.createElement()** to generate a new node in memory. For ex- const newDiv = document.createElement('div');. And then for adding as a chile we use appendChild() which adds the element as the last child of a parent.
 A practical example would be:
@@ -21,7 +21,7 @@ newItem.textContent = 'Apples';
 Snap it into place at the end of the list
 list.appendChild(newItem);
 
-3. What is Event Bubbling? And how does it work?
+### 3. What is Event Bubbling? And how does it work?
 Ans: It is an event whehre if lets say we clicked on a child element then the same event would be triggered on the parent elements as well since it moves updward. It starts from the target element to the document root.
 
 It has 3 phases
@@ -29,13 +29,15 @@ It has 3 phases
 2. Target Phase: The event reaches the element  clicked.
 3. Bubbling Phase: The event travels back up from the target to the root. 
 
-4. What is Event Delegation in JavaScript? Why is it useful?
+### 4. What is Event Delegation in JavaScript? Why is it useful?
 Ans: It utilizes the behavior of event bubbling to our advanges where instead of adding an event listener to every child element we just add one to the parent since events bubble from children to parent the parent will be able to catch the event and figure which child was clicked.
 It is useful for multiple reasons such as
 - memory efficiency
 - cleaner code
 - handling dynamic elements
-5. What is the difference between preventDefault() and stopPropagation() methods?
+
+### 5. What is the difference between preventDefault() and stopPropagation() methods?
+
 Ans: Both are used to interrupt the normal flow of an event.
 - preventDefault()- stops the browser's built-in action,
 - stopPropagation() - stops the event from propagating (bubbling up or capturing down) the DOM tree to other elements. 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+
+    <!-- Daisy Ui and Tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- for geist font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+             font-family: "Geist", sans-serif;
+        }
+    </style>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+    <section id="job-application-tracker-section" class="container mx-auto pt-23">
+        <h2 class="mb-5 text-3xl font-bold text-[#002C5C]">Job Application Tracker</h2>
+
+        <div class="job-tracker-container grid grid-cols-3 gap-4">
+            <div class="tracker-card bg-[#FFFFFF] shadow-md border-1 border-[#F1F2F4] p-5 space-y-2">
+                <p class="font-medium">Total</p>
+                <h2 class="text-[#002C5C] text-xl">8</h2>
+            </div>
+            <div class="tracker-card bg-[#FFFFFF] shadow-md border-1 border-[#F1F2F4] p-5 space-y-2">
+                <p class="font-medium">Interview</p>
+                <h2 class="text-[#002C5C] text-xl">0</h2>
+            </div>
+            <div class="tracker-card bg-[#FFFFFF] shadow-md border-1 border-[#F1F2F4] p-5 space-y-2">
+                <p class="font-medium">Rejected</p>
+                <h2 class="text-[#002C5C] text-xl">0</h2>
+            </div>
+        </div>
+
+        <hr class="mt-8 mb-8 opacity-20">
+
+    </section>
+
+    
+    <section id="available-jobs" class="container border-2 mx-auto">
+        <button itemid="click-here" class="border-2 p-4 cursor-pointer" id="click-here">Click Here</button>
+    </section>
+
+    
+
+    <script src="./scripts/tester.js"></script>
+
+</body>
+</html>

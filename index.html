@@ -51,7 +51,7 @@
     </section>
 
   
-
+    
     
     <section id="available-jobs" class="container mx-auto">
        <div class="flex justify-between items-center">
@@ -68,9 +68,15 @@
             py-3 px-3 cursor-pointer font-semibold rounded-md">Rejected</button>
        </div>
 
-         <!-- Filtered Section to show -->
-    <section id="filtered-section" class="grid grid-cols-1 gap-4 hidden">
+     <!-- Filtered Section to show -->
+    <section id="filtered-section">
+       
+    </section>
 
+    <section id="no-jobs-available" class="bg-[#FFFFFF] border-2 border-[#F1F2F4] shadow-md rounded-md flex flex-col py-24 px-6 justify-center items-center hidden">
+        <img src="./images/jobs.png" alt="" class="w-24">
+        <h2 class="font-semibold text-2xl mt-5 mb-1">No jobs available</h2>
+        <p>Check back soon for new job opportunities</p>
     </section>
        
        <div id="job-container" class="jobs-information-container grid grid-cols-1 gap-4">

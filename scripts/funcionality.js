@@ -46,13 +46,22 @@ function toggleStyle(id){
 
     if(id=='interview-btn-tab'){
         document.getElementById('job-container').classList.add('hidden');
-        document.getElementById('filtered-section').classList.remove('hidden');
-        renderInterview();
+        if(interviewList.length==0){
+            document.getElementById('available-job-count').innerText=interviewList.length;
+            document.getElementById('no-jobs-available').classList.remove('hidden');
+        }
+        else{
+            console.log("Array size",interviewList.length);
+            document.getElementById('available-job-count').innerText=interviewList.length;
+            document.getElementById('filtered-section').classList.remove('hidden');
+            renderInterview();
+        }
     }
     else if(id=='all-btn-tab'){
-         document.getElementById('job-container').classList.remove('hidden');
+        document.getElementById('available-job-count').innerText=document.getElementById('job-container').children.length;
+        document.getElementById('no-jobs-available').classList.add('hidden');
+        document.getElementById('job-container').classList.remove('hidden');
         document.getElementById('filtered-section').classList.add('hidden');
-        renderInterview();
     }
     
 }
@@ -91,7 +100,7 @@ job_contain.addEventListener('click',function(event){
             parentNode.querySelector('.job-badge').innerText='INTERVIEW'
             interviewList.push(jobInfo);
         }
-
+        total_card();
         // renderInterview();
         // console.log(interviewList.length);        
         // console.log(interviewList);
@@ -103,22 +112,25 @@ job_contain.addEventListener('click',function(event){
     
 })
 
+
+
 function renderInterview(){
-
+    
     filterSection.innerHTML='';
-
+    let div=document.createElement('div');
+    div.className='jobs-information-container grid grid-cols-1 gap-4';
     for(let interview of interviewList){
         
         console.log(interview);
         
-        let div=document.createElement('div');
-        div.className='jobs-information-container grid grid-cols-1 gap-4';
-        div.innerHTML=`
+        // let div=document.createElement('div');
+        // div.className='jobs-information-container grid grid-cols-1 gap-4';
+        div.innerHTML+=`
             <div class="jobs-info-card p-6 bg-[#FFFFFF] shadow-md border-[#F1F2F4] rounded-md border-2">
                 <div class="flexing-card-button flex justify-between items-center">
                     <div>
-                        <h2 class="company-name text-[#002C5C] font-semibold mb-1 text-xl">Mobile First Corp</h2>
-                        <p class="job-position text-[#64748B]">React Native Developer</p>
+                        <h2 class="company-name text-[#002C5C] font-semibold mb-1 text-xl">${interview.companyName}</h2>
+                        <p class="job-position text-[#64748B]">${interview.jobPosition}</p>
 
                     </div>
                     <div class="w-8 rounded-full bg-[#FFFFFF]">
@@ -126,9 +138,9 @@ function renderInterview(){
                         <button class="cursor-pointer "><img src="./images/Trash.png" alt=""></button>
                     </div>
                 </div>
-                <p class="job-salary my-5 text-[#64748B] text-sm">Remote • Full-time •$130,000 - $175,000</p>
+                <p class="job-salary my-5 text-[#64748B] text-sm">${interview.jobSalary}</p>
                 <div class="job-badge badge badge-success text-[#002C5C] p-4">INTERVIEW</div>
-                <p class="job-description text-[#323B49] text-sm mt-2 mb-5">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                <p class="job-description text-[#323B49] text-sm mt-2 mb-5">${interview.jobDescription}</p>
 
                 <!-- duita button banao -->
                  <div class="flex gap-2">

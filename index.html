@@ -34,15 +34,15 @@
         <div class="job-tracker-container grid grid-cols-3 gap-4">
             <div class="tracker-card bg-[#FFFFFF] shadow-md border-1 border-[#F1F2F4] p-5 space-y-2 rounded-md">
                 <p class="font-medium">Total</p>
-                <h2 class="text-[#002C5C] text-xl">8</h2>
+                <h2 id="total-tracker-count" class="text-[#002C5C] text-xl">8</h2>
             </div>
             <div class="tracker-card bg-[#FFFFFF] shadow-md border-1 border-[#F1F2F4] p-5 space-y-2 rounded-md">
                 <p class="font-medium">Interview</p>
-                <h2 class="text-[#002C5C] text-xl">0</h2>
+                <h2 id="interview-tracker-count" class="text-[#002C5C] text-xl">0</h2>
             </div>
             <div class="tracker-card bg-[#FFFFFF] shadow-md border-1 border-[#F1F2F4] p-5 space-y-2 rounded-md">
                 <p class="font-medium">Rejected</p>
-                <h2 class="text-[#002C5C] text-xl">0</h2>
+                <h2 id="rejected-tracker-count" class="text-[#002C5C] text-xl">0</h2>
             </div>
         </div>
 
@@ -50,29 +50,36 @@
 
     </section>
 
+  
+
     
     <section id="available-jobs" class="container mx-auto">
        <div class="flex justify-between items-center">
             <h3 class="text-2xl font-semibold">Available Jobs</h3>
-            <p class="text-[#64748B]"><span>8</span> jobs</p>
+            <p class="text-[#64748B]"><span id="available-job-count">8</span> jobs</p>
        </div>
 
        <div class="button-filter-container flex gap-2 mt-6 mb-4">
-            <button class="bg-[#3B82F6] text-[#FFFFFF]
+            <button onclick="toggleStyle('all-btn-tab')" id="all-btn-tab" class="bg-[#3B82F6] text-[#FFFFFF]
             py-3 px-9 cursor-pointer font-semibold rounded-md">All</button>
-            <button class="text-[#64748B] bg-[#FFFFFF] shadow-md border-[#F1F2F4] border-1
+            <button onclick="toggleStyle('interview-btn-tab')" id="interview-btn-tab" class="text-[#64748B] bg-[#FFFFFF] shadow-md border-[#F1F2F4] border-1
             py-3 px-3 cursor-pointer font-semibold rounded-md">Interview</button>
-            <button class="text-[#64748B] bg-[#FFFFFF] shadow-md border-[#F1F2F4] border-1
+            <button onclick="toggleStyle('rejected-btn-tab')" id="rejected-btn-tab" class="text-[#64748B] bg-[#FFFFFF] shadow-md border-[#F1F2F4] border-1
             py-3 px-3 cursor-pointer font-semibold rounded-md">Rejected</button>
        </div>
+
+         <!-- Filtered Section to show -->
+    <section id="filtered-section" class="grid grid-cols-1 gap-4 hidden">
+
+    </section>
        
-       <div class="jobs-information-container grid grid-cols-1 gap-4">
+       <div id="job-container" class="jobs-information-container grid grid-cols-1 gap-4">
            
         <div class="jobs-info-card p-6 bg-[#FFFFFF] shadow-md border-[#F1F2F4] rounded-md border-2">
                 <div class="flexing-card-button flex justify-between items-center">
                     <div>
-                        <h2 class="text-[#002C5C] font-semibold mb-1 text-xl">Mobile First Corp</h2>
-                        <p class="text-[#64748B]">React Native Developer</p>
+                        <h2 class="company-name text-[#002C5C] font-semibold mb-1 text-xl">Mobile First Corp</h2>
+                        <p class="job-position text-[#64748B]">React Native Developer</p>
 
                     </div>
                     <div class="w-8 rounded-full bg-[#FFFFFF]">
@@ -80,14 +87,14 @@
                         <button class="cursor-pointer "><img src="./images/Trash.png" alt=""></button>
                     </div>
                 </div>
-                <p class="my-5 text-[#64748B] text-sm">Remote • Full-time •$130,000 - $175,000</p>
-                <div class="badge badge-soft badge-primary text-[#002C5C] p-4">Not Applied</div>
-                <p class="text-[#323B49] text-sm mt-2 mb-5">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                <p class="job-salary my-5 text-[#64748B] text-sm">Remote • Full-time •$130,000 - $175,000</p>
+                <div class="job-badge badge badge-soft badge-primary text-[#002C5C] p-4">Not Applied</div>
+                <p class="job-description text-[#323B49] text-sm mt-2 mb-5">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
 
                 <!-- duita button banao -->
                  <div class="flex gap-2">
-                    <button class="text-[#10B981] py-2 px-3 font-semibold border-1 cursor-pointer hover:bg-green-300">INTERVIEW</button>
-                    <button class="text-[#EF4444] py-2 px-3 font-semibold border-1 cursor-pointer hover:bg-red-300">REJECTED</button>
+                    <button class="interview-btn text-[#10B981] py-2 px-3 font-semibold border-1 cursor-pointer hover:bg-green-300">INTERVIEW</button>
+                    <button class="rejected-btn text-[#EF4444] py-2 px-3 font-semibold border-1 cursor-pointer hover:bg-red-300">REJECTED</button>
                  </div>
 
         </div>
@@ -95,8 +102,8 @@
          <div class="jobs-info-card p-6 bg-[#FFFFFF] shadow-md border-[#F1F2F4] rounded-md border-2">
                 <div class="flexing-card-button flex justify-between items-center">
                     <div>
-                        <h2 class="text-[#002C5C] font-semibold mb-1 text-xl">WebFlow Agency</h2>
-                        <p class="text-[#64748B]">Web Designer & Developer</p>
+                        <h2 class="company-name text-[#002C5C] font-semibold mb-1 text-xl">WebFlow Agency</h2>
+                        <p class="job-position text-[#64748B]">Web Designer & Developer</p>
 
                     </div>
                     <div class="w-8 rounded-full bg-[#FFFFFF]">
@@ -104,19 +111,19 @@
                         <button class="cursor-pointer "><img src="./images/Trash.png" alt=""></button>
                     </div>
                 </div>
-                <p class="my-5 text-[#64748B] text-sm">Los Angeles, CA •Part-time •$80,000 - $120,000</p>
-                <div class="badge badge-soft badge-primary text-[#002C5C] p-4">Not Applied</div>
-                <p class="text-[#323B49] text-sm mt-2 mb-5">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
+                <p class="job-salary my-5 text-[#64748B] text-sm">Los Angeles, CA •Part-time •$80,000 - $120,000</p>
+                <div class="job-badge badge badge-soft badge-primary text-[#002C5C] p-4">Not Applied</div>
+                <p class="job-description text-[#323B49] text-sm mt-2 mb-5">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p>
 
                 <!-- duita button banao -->
                  <div class="flex gap-2">
-                    <button class="text-[#10B981] py-2 px-3 font-semibold border-1 cursor-pointer hover:bg-green-300">INTERVIEW</button>
-                    <button class="text-[#EF4444] py-2 px-3 font-semibold border-1  cursor-pointer hover:bg-red-300">REJECTED</button>
+                    <button class="interview-btn text-[#10B981] py-2 px-3 font-semibold border-1 cursor-pointer hover:bg-green-300">INTERVIEW</button>
+                    <button class="rejected-btn text-[#EF4444] py-2 px-3 font-semibold border-1  cursor-pointer hover:bg-red-300">REJECTED</button>
                  </div>
 
         </div>    
             
-
+        
             
        </div>
 
@@ -124,7 +131,7 @@
 
     
 
-    <script src="./scripts/tester.js"></script>
+    <script src="./scripts/funcionality.js"></script>
 
 </body>
 </html>

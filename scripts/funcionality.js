@@ -133,6 +133,7 @@ job_contain.addEventListener('click',function(event){
             parentNode.querySelector('.job-badge').classList.add('badge-success');
             parentNode.querySelector('.job-badge').innerText='INTERVIEW'
             interviewList.push(jobInfo);
+            
         }
         
         const foundInRejected=rejectedList.find(item=>item.companyName==companyName);
@@ -140,6 +141,9 @@ job_contain.addEventListener('click',function(event){
             // will have to change the style of the badge
             parentNode.querySelector('.job-badge').classList.remove('badge-error');
             rejectedList=rejectedList.filter(value=>value.companyName!=companyName);
+            console.log("Niche rejected List");
+            
+            console.log(rejectedList);
             
             // kon tab a achi r
            
@@ -147,7 +151,21 @@ job_contain.addEventListener('click',function(event){
 
          if(currentStatus=='rejected-btn-tab'){
             // interview tab a ache
-            console.log("Interview  list len",interviewList);
+            
+            let holder=document.getElementById('job-container');
+
+            for(hold of holder.children){
+                // console.log(hold);
+                let nameCompany=hold.querySelector('.company-name').innerText;
+                if(nameCompany==companyName){
+                    console.log(nameCompany);
+                    let badge=hold.querySelector('.job-badge');
+                    badge.innerText="INTERVIEW"
+                    badge.classList.add('badge-success');
+                    badge.classList.remove('badge-error');
+                }
+            }
+
             if(rejectedList.length==0){
                 // console.log("Interview  list len",interviewList);
                 
@@ -157,12 +175,14 @@ job_contain.addEventListener('click',function(event){
             }
             else{
                 document.getElementById('no-jobs-available').classList.add('hidden');
-                renderInterview();
+                renderRejected();
             }
+
+            
         }
         
         total_card();
-      
+        document.getElementById('available-job-count').innerText=rejectedList.length;
         
     }
     else if(event.target.classList.contains('rejected-btn')){
@@ -216,10 +236,25 @@ job_contain.addEventListener('click',function(event){
                 document.getElementById('no-jobs-available').classList.add('hidden');
                 renderInterview();
             }
+
+            let holder=document.getElementById('job-container');
+
+            for(hold of holder.children){
+                // console.log(hold);
+                let nameCompany=hold.querySelector('.company-name').innerText;
+                if(nameCompany==companyName){
+                    console.log(nameCompany);
+                    let badge=hold.querySelector('.job-badge');
+                    badge.innerText="REJECTED"
+                    badge.classList.add('badge-error');
+                    badge.classList.remove('badge-success');
+                }
+            }
         }
         
 
         total_card();
+        document.getElementById('available-job-count').innerText=interviewList.length;
     } 
     
     

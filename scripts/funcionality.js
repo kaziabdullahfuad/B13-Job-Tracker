@@ -102,8 +102,9 @@ function toggleStyle(id){
 
 job_contain.addEventListener('click',function(event){
     
-    // console.log(event.target);
+     console.log(event.target);
     // console.log(event.target.parentNode.parentNode);
+    const deleteBtn = event.target.closest('.delete-btn');
     
     if(event.target.classList.contains('interview-btn')){
          const parentNode=event.target.parentNode.parentNode;
@@ -251,10 +252,34 @@ job_contain.addEventListener('click',function(event){
                 }
             }
         }
-        
+            
 
         total_card();
         document.getElementById('available-job-count').innerText=interviewList.length;
+    }
+    else if (event.target.classList.contains('delete-btn')) {
+        console.log("YES paisi", event.target);
+
+         const card = event.target.closest(".jobs-info-card");
+         const nameCompany=card.querySelector('.company-name').innerText;
+         console.log(nameCompany);
+         
+         if(confirm("Are you sure you want to Delete")){
+
+             card.remove(); // removes the entire job card
+             interviewList=interviewList.filter(item=>item.companyName!=nameCompany);
+             rejectedList=rejectedList.filter(item=>item.companyName!=nameCompany);
+
+            console.log(document.getElementById('job-container').children.length);
+            const totalJobs=document.getElementById('job-container').children.length;
+            if(totalJobs==0){
+                document.getElementById('job-container').classList.add('hidden');
+                document.getElementById('filtered-section').classList.add('hidden');
+                document.getElementById('no-jobs-available').classList.remove('hidden');
+            }
+         }
+         
+         total_card();
     } 
     
     

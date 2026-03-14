@@ -144,6 +144,22 @@ job_contain.addEventListener('click',function(event){
             // kon tab a achi r
            
         }
+
+         if(currentStatus=='rejected-btn-tab'){
+            // interview tab a ache
+            console.log("Interview  list len",interviewList);
+            if(rejectedList.length==0){
+                // console.log("Interview  list len",interviewList);
+                
+                 document.getElementById('no-jobs-available').classList.remove('hidden');
+                  document.getElementById('filtered-section').classList.add('hidden');
+                // renderInterview();
+            }
+            else{
+                document.getElementById('no-jobs-available').classList.add('hidden');
+                renderInterview();
+            }
+        }
         
         total_card();
       
@@ -201,6 +217,7 @@ job_contain.addEventListener('click',function(event){
                 renderInterview();
             }
         }
+        
 
         total_card();
     } 
